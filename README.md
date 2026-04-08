@@ -17,9 +17,9 @@ This pipeline takes paired-end Illumina FASTQ files, aligns them to a reference 
 ## Before You Begin
 
 ### 1. ASU Sol account and scratch space
-You must have an active ASU Research Computing account and access to the Lynch lab allocation (`grp_mlynch11`). Contact Parker or the lab manager if you need to be added.
+You must have an active ASU Research Computing account and access to the Lynch lab allocation (`grp_mlynch11`). Contact Kara if you need to be added.
 
-All analysis should be run in your scratch directory, which is located at:
+All analyses should be run in your scratch directory, which is located at:
 ```
 /scratch/YOURASURITE/
 ```
