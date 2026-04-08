@@ -35,8 +35,6 @@ scp alignment_pipeline.sh submit_job.sh sample_list.txt \
 ### 3. Upload your reference genome
 Place your reference genome FASTA file in your project directory on scratch. Reference genomes are available from:
 - **S. cerevisiae (sacCer3):** UCSC Genome Browser or SGD
-- **Human (GRCh38):** Ensembl or NCBI
-- **Mouse (GRCm39):** Ensembl or NCBI
 
 ### 4. Upload your trimmed FASTQ files
 Create a `trimmed/` subdirectory inside your project directory and place your trimmed, paired-end FASTQ files there:
@@ -73,9 +71,9 @@ The sample name used in the filename must match exactly what is listed in `sampl
 ### Sample list format
 `sample_list.txt` should contain one sample name per line, with no header:
 ```
-SG_UDP0258V2_S1
-SG_UDP0259V2_S2
-SG_UDP0260V2_S3
+example_sample_name_1
+example_sample_name_2
+example_sample_name_3
 ```
 
 Each line corresponds to one SLURM array task. Line 1 → task 1, line 2 → task 2, etc.
@@ -171,7 +169,7 @@ BWA and GATK require index files to efficiently look up positions in the referen
 Maps paired-end reads to the reference genome. The output is a SAM file with each read's position in the genome. The read group (`@RG`) tag is added here and is required by GATK for downstream processing.
 
 ### Step 3 — Mark duplicates and sort (GATK MarkDuplicatesSpark)
-PCR amplification during library preparation can create copies of the same DNA fragment. These duplicates inflate variant allele frequencies and must be flagged. Reads are also coordinate-sorted, which is required for BAM indexing and variant calling.
+PCR amplification during library preparation can create copies of the same DNA fragment. These duplicates inflate variant allele frequencies and must be flagged. Reads are also coordinate-sorted, a requirement for BAM indexing and variant calling.
 
 ### Step 4 — Collect QC metrics
 Generates quality control statistics about the alignment, including the percentage of reads that mapped, average coverage depth, and insert size distribution. Review these before proceeding — low alignment rates or unexpected insert sizes can indicate a problem with the sample or reference genome.
